@@ -1,4 +1,3 @@
-//Gabriele 4C
 import java.net.*;
 import java.io.*;
 
@@ -17,9 +16,26 @@ public class Zonemindercurl {
 
 class ZoneMinder_API 
 {
+    String user = "";
+    String pw = "";
+    String dom = "";
+    String link = "";
+    
+    ZoneMinder_API(String pU, String pP,String pD, String pL)
+    {
+        user = pU;
+        pw = pP;
+        dom = pD;
+        link = pL;
+    }
+    
     public void get() throws Exception
     {
-        URL oracle = new URL("http://www.oracle.com/");
+        /*HttpURLConnection con = (HttpURLConnection) new URL("https://www.example.com").openConnection();
+con.setRequestMethod("POST");
+con.getOutputStream().write("LOGIN".getBytes("UTF-8"));
+con.getInputStream();*/
+        URL oracle = new URL(dom + link);
         URLConnection yc = oracle.openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(
                                     yc.getInputStream()));
