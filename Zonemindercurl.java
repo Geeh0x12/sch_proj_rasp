@@ -1,11 +1,7 @@
 import java.net.*;
 import java.io.*;
 
-public class Zonemindercurl {
-
-    /**
-     * @param args the command line arguments
-     */
+public class JavaApplication2 {
     public static void main(String[] args)  throws Exception {
         ZoneMinder_API api = new ZoneMinder_API();
         api.get();
@@ -16,31 +12,39 @@ public class Zonemindercurl {
 
 class ZoneMinder_API 
 {
-    String user = "";
-    String pw = "";
-    String dom = "";
-    String link = "";
+    String user = "&userId=Test";
+    String pw = "&password=Test2";
+    String dom = "http://www.google.com";
+    String link = "/intl/it/chrome/devices/chromecast/index.html";
     
-    ZoneMinder_API(String pU, String pP,String pD, String pL)
+    ZoneMinder_API()
     {
-        user = pU;
-        pw = pP;
-        dom = pD;
-        link = pL;
     }
     
     public void get() throws Exception
     {
-        /*HttpURLConnection con = (HttpURLConnection) new URL("https://www.example.com").openConnection();
-con.setRequestMethod("POST");
-con.getOutputStream().write("LOGIN".getBytes("UTF-8"));
-con.getInputStream();*/
-        URL oracle = new URL(dom + link);
-        URLConnection yc = oracle.openConnection();
+        URL link2 = new URL("http://www.twitter.com");
+        
+        
+        //TODO: Test Cookies w/ compatible websites
+        CookieManager cookieManager = new CookieManager();
+        CookieHandler.setDefault(cookieManager);
+        HttpCookie cookie = new HttpCookie("lang","fr");
+        cookie.setDomain("twitter.com");
+        cookie.setPath("/");
+        cookie.setVersion(0);
+        cookieManager.getCookieStore().add(new URI("http://www.twitter.com"),cookie);
+        
+        HttpURLConnection con = (HttpURLConnection)link2.openConnection();
+        
+        con.setRequestMethod("GET");
+        //con.getOutputStream().write("LOGIN".getBytes("UTF-8"));
+        
         BufferedReader in = new BufferedReader(new InputStreamReader(
-                                    yc.getInputStream()));
+                                                    con.getInputStream()
+                                                                    ));
         String inputLine;
-        while ((inputLine = in.readLine()) != null) 
+        while ((inputLine = in.readLine()) != null)
             System.out.println(inputLine);
         in.close();
         
