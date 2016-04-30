@@ -15,9 +15,22 @@
         android:id="@+id/ipdebug"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/editText"
-        android:layout_marginTop="194dp"
+        android:layout_marginTop="200dp"
         android:editable="false"
-        android:enabled="true" />
+        android:enabled="true"
+        android:textStyle="bold"
+        android:singleLine="false"
+        android:password="false"
+        android:phoneNumber="false"
+        android:focusable="false" />
+
+    <WebView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pic"
+        android:onClick="onClickRefresh" />
+
+
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
