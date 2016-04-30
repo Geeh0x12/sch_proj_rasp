@@ -8,6 +8,17 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.mrlui.android_app4.MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ipresult"
+        android:id="@+id/ipdebug"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/editText"
+        android:layout_marginTop="194dp"
+        android:editable="false"
+        android:enabled="true" />
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
