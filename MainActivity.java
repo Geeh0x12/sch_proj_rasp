@@ -86,16 +86,30 @@ public class MainActivity extends AppCompatActivity {
             Intent settinsmen = new Intent(this,
                     Settings.class);
 
-            final int result = 1;
             //Use Intent.putExtra to give args
 
-            startActivity(settinsmen);
+            //settinsmen.putExtra("IP",ip);
+            final int result = 0;
+            startActivityForResult(settinsmen,result);
             // use StartActivityForResult with result arg to get data from activity
+            //startActivityForResult(settinsmen,ip);
 
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode,resultCode,data);
+        TextView ipdebug = (TextView) findViewById(R.id.ipdebug);
+
+        String ipreceived = data.getStringExtra("ip");
+
+        ipdebug.setText(ipreceived);
+
     }
 
     /**
