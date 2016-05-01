@@ -24,12 +24,6 @@
         android:phoneNumber="false"
         android:focusable="false" />
 
-    <WebView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pic"
-        android:onClick="onClickRefresh" />
-
 
 
     <android.support.design.widget.AppBarLayout
