@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,10 +115,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickRefresh(View view) {
-        //TODO: When Pics are clicked
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -147,10 +145,25 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-            //TODO: Add Webview here
+            //TODO: Customize WebView
+            WebView cam;
+            WebSettings webSettings;
 
-            WebView cam = (WebView) rootView.findViewById(R.id.pic);
-            cam.loadUrl("http://weknowyourdreamz.com/images/cat/cat-02.jpg");
+            cam = (WebView) rootView.findViewById(R.id.camView);
+            webSettings = cam.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+
+            switch(getArguments().getInt(ARG_SECTION_NUMBER))
+            {
+                case 1:
+                    cam.loadUrl("https://www.google.com");
+                    break;
+                case 2:
+                    cam.loadUrl("https://www.facebook.com");
+                    break;
+                default:
+                    cam.loadUrl("https://www.youtube.com");
+            }
 
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
